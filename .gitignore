@@ -4,6 +4,8 @@
 
 .DS_Store
 
+code/mothur/*
+
 data/*/*
 !data/process/*
 !README.md
