@@ -16,7 +16,7 @@ rm StabilityWMetaG.tar
 wget http://mothur.org/w/images/1/15/Silva.seed_v123.tgz
 tar xvzf Silva.seed_v123.tgz silva.seed_v123.align silva.seed_v123.tax
 code/mothur/mothur "#get.lineage(fasta=silva.seed_v123.align, taxonomy=silva.seed_v123.tax, taxon=Bacteria);degap.seqs(fasta=silva.seed_v123.pick.align, processors=8)"
-mv silva.seed_v123.pick.align data/references/silva.seed.align
+xmv silva.seed_v123.pick.align data/references/silva.seed.align
 rm Silva.seed_v123.tgz silva.seed_v123.*
 rm mothur.*.logfile
 
@@ -28,3 +28,8 @@ tar xvzf Trainset14_032015.pds.tgz
 mv trainset14_032015.pds/train* data/references/
 rm -rf trainset14_032015.pds
 rm Trainset14_032015.pds.tgz
+
+
+# Generate a customized version of the SILVA v4 reference dataset
+code/mothur/mothur "#pcr.seqs(fasta=data/references/silva.seed.align, start=11894, end=25319, keepdots=F, processors=8)"
+mv data/references/silva.seed.pcr.align data/references/silva.v4.align
